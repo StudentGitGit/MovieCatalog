@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог мультфильмов</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Современный шрифт */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: #f4f4f4;
+        }
+        .header {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            background-color: #0066cc; /* Современный тёмно-синий цвет */
+            color: white;
+        }
+        .card {
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease-in-out; /* Плавное изменение тени и масштаба */
+            width: 300px;
+            overflow: hidden; /* Обрезает изображения по контуру карточки */
+            border-radius: 8px; /* Скруглённые углы */
+            background: white;
+        }
+        .card:hover {
+            transform: scale(1.05); /* Увеличивает карточку при наведении */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+        .container {
+            padding: 16px;
+            text-align: center;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out; /* Плавное увеличение изображения при наведении */
+        }
+        img:hover {
+            transform: scale(1.1);
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-top: 20px;
+            box-sizing: border-box;
+            border: 2px solid #0066cc; /* Граница в стиле заголовка */
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>MOVIE-COM</h1>
+        <h2>Каталог мультфильмов</h2>
+        <input type="text" id="searchBox" onkeyup="searchMovies()" placeholder="Поиск по названию...">
+    </div>
+    <div class="card" onclick="location.href='index1.html';">
+        <img src="imager2.jpg" alt="Гринч">
+        <div class="container">
+            <h4><b>Гринч</b></h4>
+        </div>
+    </div>
+    <div class="card" onclick="location.href='index2.html';">
+        <img src="images1.jpg" alt="Лего Бэтмен">
+        <div class="container">
+            <h4><b>Лего Бэтмен</b></h4>
+        </div>
+    </div>
+
+    <script>
+        function searchMovies() {
+            let input = document.getElementById("searchBox");
+            let filter = input.value.toLowerCase();
+            let cards = document.querySelectorAll(".card");
+
+            cards.forEach(card => {
+                let title = card.querySelector(".container h4").textContent.toLowerCase();
+                if (title.includes(filter)) {
+                    card.style.display = "";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
